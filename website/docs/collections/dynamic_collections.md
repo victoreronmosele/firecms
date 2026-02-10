@@ -19,10 +19,10 @@ import { EntityCollectionsBuilder } from "@firecms/core";
 // ...
 
 const collectionsBuilder: EntityCollectionsBuilder = async ({
-                                                                user,
-                                                                authController,
-                                                                dataSource
-                                                            }) =>
+        user,
+        authController,
+        dataSource
+    }) =>
     ({
         collections: [
             buildCollection({
@@ -51,17 +51,22 @@ use it to populate the enum values of a property called `category`, in the `prod
 collection.
 
 ```tsx
-import { useCallback } from "react";
-import { buildCollection, EntityCollectionsBuilder } from "@firecms/core";
+import {
+    useCallback
+} from "react";
+import {
+    buildCollection,
+    EntityCollectionsBuilder
+} from "@firecms/core";
 
 const collectionsBuilder: EntityCollectionsBuilder = async ({
-                                                                user,
-                                                                authController,
-                                                                dataSource
-                                                            }) => {
+    user,
+    authController,
+    dataSource
+}) => {
 
     // let's assume you have a database collection called "categories"
-    const categoriesData: Entity<any>[] = await dataSource.fetchCollection({
+    const categoriesData: Entity < any > [] = await dataSource.fetchCollection({
         path: "categories"
     });
 
@@ -102,12 +107,14 @@ A typical use case is to store some additional data related to the user, for
 example, the roles or the permissions.
 
 ```tsx
-import { useCallback } from "react";
+import {
+    useCallback
+} from "react";
 
-const myAuthenticator: Authenticator<FirebaseUserWrapper> = useCallback(async ({
-                                                                            user,
-                                                                            authController
-                                                                        }) => {
+const myAuthenticator: Authenticator < FirebaseUserWrapper > = useCallback(async ({
+    user,
+    authController
+}) => {
 
     if (user?.email?.includes("flanders")) {
         throw Error("Stupid Flanders!");
@@ -127,10 +134,10 @@ Then you can access the extra data in the `collectionsBuilder` callback.
 
 ```tsx
 const collectionsBuilder: EntityCollectionsBuilder = useCallback(async ({
-                                                                            user,
-                                                                            authController,
-                                                                            dataSource
-                                                                        }) => {
+    user,
+    authController,
+    dataSource
+}) => {
 
     const userRoles = authController.extra;
 
@@ -160,10 +167,10 @@ config.
 ```tsx
 
 const collectionsBuilder: EntityCollectionsBuilder = async ({
-                                                                user,
-                                                                authController,
-                                                                dataSource
-                                                            }) => {
+    user,
+    authController,
+    dataSource
+}) => {
     return {
         collections: [] // your collections here
     };
